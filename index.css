@@ -497,7 +497,7 @@ body.light-mode .login-button:hover {
 }
 
 
-/* === THEME TOGGLE ICON === */
+/* === THEME TOGGLE (DESKTOP) === */
 .theme-toggle {
   position: fixed;
   top: 24px;
@@ -506,30 +506,35 @@ body.light-mode .login-button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 4px;
-  background-color: transparent;
-  border-radius: 12px;
   cursor: pointer;
 }
 
-/* Images inside toggle */
 .theme-toggle img {
   width: 55px;
   height: 32px;
   display: none;
-  transition: opacity 0.3s ease;
 }
 
 .theme-toggle img.active {
   display: block;
-  opacity: 1;
 }
 
-/* === Hide toggle on small screens === */
-@media (max-width: 1590px) {
+@media (max-width: 1580px) {
+  .site-header {
+    position: relative; /* anchor for absolute child */
+  }
+
   .theme-toggle {
-    display: none;
+    position: absolute;
+    top: 110px;              /* under nav bar */
+    right: 9%;
+    transform: translateX(50%);
+    z-index: 100;
+  }
+
+  .theme-toggle img {
+    width: 48px;
+    height: 28px;
   }
 }
 
@@ -2422,10 +2427,10 @@ background: linear-gradient(
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* === Toggle Button (See More / Less) === */
+/* === Toggle Button (default – large screens) === */
 .kasmir-toggle-btn {
   display: block;
-  margin: 2rem 0 0 23.2rem; /* Keep this on large screens */
+  margin: 2rem 0 0 23.2rem; /* desktop only */
   padding: 0.5rem 1rem;
   background: #ffffff00;
   color: #fff;
@@ -2437,38 +2442,20 @@ background: linear-gradient(
   text-align: center;
 }
 
+/* Light mode */
 .light-mode .kasmir-toggle-btn {
-  display: block;
-  margin: 2rem 0 0 23.2rem; /* Keep this on large screens */
-  padding: 0.5rem 1rem;
-  background: #ffffff00;
-  color: #000000;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
-  text-align: center;
+  margin: 2rem 0 0 23.2rem; /* desktop only */
+  color: #000;
+  border: 1px solid #000;
 }
 
-.kasmir-toggle-btn:hover {
-background: linear-gradient(
-  360deg,
-  rgba(85, 85, 85, 0.658) 0%,     /* Dodger Blue */
-  rgba(99, 99, 99, 0.7) 50%,   /* Light Sky Blue */
-  rgba(97, 97, 97, 0.85) 100%  /* Alice Blue (cloud-like) */
-);
-  box-shadow: 0 0 12px rgba(184, 184, 184, 0.801); /* red glow */
-  transform: scale(1.03);
-}
-
-/* === Responsive override: center on smaller screens === */
+/* === MOBILE & TABLET FIX === */
 @media (max-width: 1024px) {
-  .kasmir-toggle-btn {
-    margin: 2rem auto 0 auto; /* Center horizontally */
+  .kasmir-toggle-btn,
+  .light-mode .kasmir-toggle-btn {
+    margin: 2rem auto 0 auto; /* PERFECT CENTER */
   }
 }
-
 
 .kasmir-tool-card p {
   font-size: 0.95rem;
@@ -2582,7 +2569,39 @@ background: linear-gradient(
 
 .kasmir-stack-card.photoshop i { color: #31a8ff; }
 .kasmir-stack-card.photoshop:hover { box-shadow: 0 0 10px #31a8ff; }
+/* === Additional Brand Colors & Hover Shadows === */
 
+/* Oracle */
+.kasmir-stack-card.oracle i {
+  color: #F80000;
+}
+.kasmir-stack-card.oracle:hover {
+  box-shadow: 0 0 10px #F80000;
+}
+
+/* Ubuntu */
+.kasmir-stack-card.ubuntu i {
+  color: #E95420;
+}
+.kasmir-stack-card.ubuntu:hover {
+  box-shadow: 0 0 10px #E95420;
+}
+
+/* React */
+.kasmir-stack-card.react i {
+  color: #61DAFB;
+}
+.kasmir-stack-card.react:hover {
+  box-shadow: 0 0 10px #61DAFB;
+}
+
+/* C# */
+.kasmir-stack-card.csharp i {
+  color: #239120;
+}
+.kasmir-stack-card.csharp:hover {
+  box-shadow: 0 0 10px #239120;
+}
 /* Match image to icon size */
 .kasmir-stack-card .figma-logo {
   width: 40px;
